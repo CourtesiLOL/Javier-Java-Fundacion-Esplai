@@ -47,4 +47,8 @@ public class Agenda {
         }
         
     }
+    
+    public void borrarContacto(Contacto contacto) {
+        contactos.remove(contacto);
+    }
 }

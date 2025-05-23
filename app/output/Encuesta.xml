@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<encuestas>
+    <encuesta>
+        <titulo>Fruta favorita</titulo>
+        <opcion>
+            <contador>0</contador>
+            <descipcion>Manzana</descipcion>
+        </opcion>
+        <opcion>
+            <contador>0</contador>
+            <descipcion>Platano</descipcion>
+        </opcion>
+        <opcion>
+            <contador>0</contador>
+            <descipcion>Pera</descipcion>
+        </opcion>
+        <opcion>
+            <contador>0</contador>
+            <descipcion>Sandia</descipcion>
+        </opcion>
+    </encuesta>
+    <encuesta>
+        <titulo>Bebida favorita</titulo>
+        <opcion>
+            <contador>0</contador>
+            <descipcion>Agua</descipcion>
+        </opcion>
+        <opcion>
+            <contador>0</contador>
+            <descipcion>Café</descipcion>
+        </opcion>
+        <opcion>
+            <contador>0</contador>
+            <descipcion>Té</descipcion>
+        </opcion>
+    </encuesta>
+    <encuesta>
+        <titulo>Estación del año preferida</titulo>
+        <opcion>
+            <contador>0</contador>
+            <descipcion>Primavera</descipcion>
+        </opcion>
+        <opcion>
+            <contador>0</contador>
+            <descipcion>Verano</descipcion>
+        </opcion>
+        <opcion>
+            <contador>0</contador>
+            <descipcion>Otoño</descipcion>
+        </opcion>
+        <opcion>
+            <contador>0</contador>
+            <descipcion>Invierno</descipcion>
+        </opcion>
+        <opcion>
+            <contador>0</contador>
+            <descipcion>Todas por igual</descipcion>
+        </opcion>
+    </encuesta>
+
+        <encuesta>
+        <titulo>Comida</titulo>
+        <opcion>
+            <contador>0</contador>
+            <descipcion>Pizza</descipcion>
+        </opcion>
+        <opcion>
+            <contador>0</contador>
+            <descipcion>Espagetis</descipcion>
+        </opcion>
+        <opcion>
+            <contador>0</contador>
+            <descipcion>Nugets</descipcion>
+        </opcion>
+    </encuesta>
+</encuestas>
