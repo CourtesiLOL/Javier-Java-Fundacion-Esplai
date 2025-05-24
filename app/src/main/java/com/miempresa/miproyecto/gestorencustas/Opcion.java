@@ -17,7 +17,7 @@ public class Opcion {
     
     public Opcion(String descripcion, int contador) {
         this.descripcion = descripcion;
-        this.contadorSeleccion = 0;
+        this.contadorSeleccion = contador;
     }
 
     public String getDescripcion() {

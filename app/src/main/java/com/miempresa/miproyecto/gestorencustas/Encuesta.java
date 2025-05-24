@@ -64,9 +64,7 @@ public class Encuesta {
         
         
         
-    }
-    
- 
+    }    
     
     public void mostrarEstadisticas() {
         

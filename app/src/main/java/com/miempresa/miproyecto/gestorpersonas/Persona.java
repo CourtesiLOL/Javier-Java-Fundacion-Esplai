@@ -33,6 +33,11 @@ public class Persona {
         return edad;
     }
 
+    public void setEdad(int edad) {
+        this.edad = edad;
+    }
+        
+
     public String getCorreo() {
         return correo;
     }    

@@ -27,100 +27,105 @@ import org.xml.sax.SAXException;
  * @author javier
  */
 public class GestorEncuesta {
-
+    
     public static void gestorEncuestas(Scanner scaner) {
-        List<Encuesta> encuestas = new ArrayList();        
-        if (!importFromXML(encuestas)) System.out.println("Error: No se han podido cargar las encuestas");       
-        
+        List<Encuesta> encuestas = new ArrayList<>();
+        if (!importFromXML(encuestas)) {
+            System.out.println("Error: No se han podido cargar las encuestas");
+        }
+
         boolean salir = false;
 
         System.out.println("Gestor encuestas");
-        System.out.println("----------------");
+        System.out.println("----------------\n");
+        System.out.println("Comandos");
+        mostrarComandosDisponibles();
 
         while (!salir) {
             System.out.print(">");
-            String userInput = scaner.nextLine();            
-            
+            String userInput = scaner.nextLine();
+
             switch (userInput.toLowerCase()) {
-                case "verencuestas":
-                    System.out.println("\nLista de encuestas");
-                    System.out.println("------------------");
-                    
-                    for (Encuesta encuesta : encuestas) {
-                        System.out.println(encuesta.getTitulo());
-                    }
-                    break;
-
-                case "hacerencuestas":
-                    
-                    for (Encuesta encuesta : encuestas) {
-                        encuesta.mostrarEncuesta(scaner);
-                    }                    
-                    
-                    break;
-
-                case "verestadisticas":
-                  
-                    for (Encuesta encuesta : encuestas) {
-                        encuesta.mostrarEstadisticas();
-                    }      
-                    
-                    break;
-                    
-                case "crearencuesta":
-                    System.out.print("Titulo: ");
-                    String titulo = scaner.nextLine();
-                    
-                    List<Opcion> opciones = new ArrayList();
-                    
-                    boolean fin = false;                    
-                    int count = 1;
-                    String textoOpcion;
-                    
-                    System.out.println("Poner . para dejar de añadir opciones");
-                    while (!fin) {
-                        System.out.print("Opcion "+count+": ");
-                        textoOpcion = scaner.nextLine();
-                        if (textoOpcion.isBlank()) {
-                            System.out.println("Error: no puede estar vacio");
-                            continue;
-                        }
-                        if (textoOpcion.equals(".")) {
-                            fin = true;
-                            continue;
-                        }
-                        count++;
-                        opciones.add(new Opcion(textoOpcion));
-                    }
-                                        
-                    encuestas.add(new Encuesta(titulo, opciones.toArray(new Opcion[0])));
-                    System.out.println("Encuesta creada correctamente");                   
-                    
-                    break;
-                    
-                case "exportar":                    
-                    
-                    boolean respuesta = exportToXML(encuestas);
-                    System.out.println(respuesta ? "Archivo exportado correctamente" : "Error: no se puede exportar");
-                    break;
-                  
-                    
-                case "salir":
-                    salir = true;
-                    break;
-
-                default:
+                case "verencuestas" -> mostrarEncuestas(encuestas);
+                case "hacerencuestas" -> realizarEncuestas(encuestas, scaner);
+                case "verestadisticas" -> mostrarEstadisticas(encuestas);
+                case "crearencuesta" -> crearEncuesta(encuestas, scaner);
+                case "salir" -> salir = true;
+                default -> {
                     System.out.println("Comando no reconocido. Comandos posibles:");
-                    System.out.println(" - VerEncuestas   → Mustra las encuestas existentes");
-                    System.out.println(" - HacerEncuestas    → Selecciona y haces la encuesta");
-                    System.out.println(" - VerEstadisticas → ver estadisticas de una encuesta concreta");
-                    System.out.println(" - CrearEncuesta → creas tu propia encuesta");
-                    System.out.println(" - Exportar → exporta las encuestas en un archivo");
-                    System.out.println(" - salir → salir de la lista de tareas");
-
+                    mostrarComandosDisponibles();
+                }
             }
-        }        
+        }
+        
+        exportarEncuestas(encuestas);
     }
+
+    private static void mostrarEncuestas(List<Encuesta> encuestas) {
+        System.out.println("\nLista de encuestas");
+        System.out.println("------------------");
+        for (Encuesta encuesta : encuestas) {
+            System.out.println(encuesta.getTitulo());
+        }
+    }
+
+    private static void realizarEncuestas(List<Encuesta> encuestas, Scanner scaner) {
+        for (Encuesta encuesta : encuestas) {
+            encuesta.mostrarEncuesta(scaner);
+        }
+    }
+
+    private static void mostrarEstadisticas(List<Encuesta> encuestas) {
+        for (Encuesta encuesta : encuestas) {
+            encuesta.mostrarEstadisticas();
+        }
+    }
+
+    private static void crearEncuesta(List<Encuesta> encuestas, Scanner scaner) {
+        System.out.print("Titulo: ");
+        String titulo = scaner.nextLine();
+
+        List<Opcion> opciones = new ArrayList<>();
+        boolean fin = false;
+        int count = 1;
+
+        System.out.println("Poner . para dejar de añadir opciones");
+        while (!fin) {
+            System.out.print("Opcion " + count + ": ");
+            String textoOpcion = scaner.nextLine();
+
+            if (textoOpcion.isBlank()) {
+                System.out.println("Error: no puede estar vacio");
+                continue;
+            }
+
+            if (textoOpcion.equals(".")) {
+                fin = true;
+                continue;
+            }
+
+            opciones.add(new Opcion(textoOpcion));
+            count++;
+        }
+
+        encuestas.add(new Encuesta(titulo, opciones.toArray(new Opcion[0])));
+        System.out.println("Encuesta creada correctamente");
+    }
+
+    private static void exportarEncuestas(List<Encuesta> encuestas) {
+        boolean respuesta = exportToXML(encuestas);
+        System.out.println(respuesta ? "Archivo exportado correctamente" : "Error: no se puede exportar");
+    }
+
+    private static void mostrarComandosDisponibles() {        
+        System.out.println(" - VerEncuestas     → Muestra las encuestas existentes");
+        System.out.println(" - HacerEncuestas   → Selecciona y haces la encuesta");
+        System.out.println(" - VerEstadisticas  → Ver estadísticas de una encuesta concreta");
+        System.out.println(" - CrearEncuesta    → Crea tu propia encuesta");
+        System.out.println(" - Salir            → Salir del programa");
+    }
+
+    
     
     private static Encuesta buscarEncuesta(String titulo, List<Encuesta> encuestas) {
         for (Encuesta encuesta : encuestas) {

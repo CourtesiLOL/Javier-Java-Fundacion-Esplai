@@ -9,91 +9,83 @@ import java.util.Scanner;
  */
 public class CajeroBasico {
 
-        public static void cajeroBasico(Scanner scaner) {        
-                       
-        var cuenta = new CuentaBancaria("Juan", 1256);        
-            
+    
+    public static void cajeroBasico(Scanner scaner) {
+        var cuenta = new CuentaBancaria("Juan", 1256);
         boolean salir = false;
 
         System.out.println("Cajero");
-        System.out.println("------\n");
-
-        System.out.println("Bienvenido juan");
-        System.out.println("---------------\n");
-        System.out.println("Operaciones posibles\n");
-        System.out.println(" - saldo   → Muestra el saldo actual de la cuenta");
-        System.out.println(" - retirar    → Retirar dinero de tu cuenta");
-        System.out.println(" - depositar → Depositar una cantidad de dinero");
-        System.out.println(" - resumen → muestra el historial de operaciones");
-        System.out.println(" - salir → salir del cajero");
+        System.out.println("------");
+        System.out.println("Bienvenido Juan\n");
+        
+        System.out.println("Comandos");
+        mostrarComandos();
 
         while (!salir) {
             System.out.print(">");
-            String userInput = scaner.nextLine();
-            double cantidad;
+            String userInput = scaner.nextLine().toLowerCase();
 
-            switch (userInput.toLowerCase()) {
-                case "saldo":
-                    System.out.println(String.format("Saldo acutal: %s $", cuenta.consultarSaldo()));
-                    break;
-
-                case "retirar":
-                    System.out.print("Cantidad a retirar: ");
-                    cantidad = scaner.nextDouble();
-                    scaner.nextLine();
-
-                    if (cantidad <= 0) {
-                        System.out.println("Cantidad de 0 o inferior no estan permitidos");
-                        break;
-                    }
-
-
-                    if (cuenta.retirar(cantidad)) {
-                        System.out.println("Retirada exitosa");
-                        System.out.println("Saldo actual: "+cuenta.consultarSaldo());
-                    } else {
-                        System.out.println("Error: saldo insuficiente");
-                        System.out.println("Saldo atual: "+cuenta.consultarSaldo());
-                        System.out.println("Cantidad a retirar: "+cantidad);                            
-                    }
-                    break;
-
-                case "depositar":
-                    System.out.print("Cantidad: ");
-                    cantidad = scaner.nextDouble();
-                    scaner.nextLine();
-
-                    if (cantidad <= 0) {
-                        System.out.println("Cantidad de 0 o inferior no estan permitidos");
-                        break;
-                    }
-
-                    cuenta.depositar(cantidad);
-                    System.out.println("Deposito exitoso");
-                    System.out.println("Saldo actual: "+cuenta.consultarSaldo());
-                    break;
-                case "resumen":
-                    cuenta.resumenTransacciones();
-                    break;
-
-                case "salir":
-                    salir = true;
-                    break;
-
-                default:
+            switch (userInput) {
+                case "saldo" -> mostrarSaldo(cuenta);
+                case "retirar" -> retirarDinero(cuenta, scaner);
+                case "depositar" -> depositarDinero(cuenta, scaner);
+                case "resumen" -> cuenta.resumenTransacciones();
+                case "salir" -> salir = true;
+                default -> {
                     System.out.println("Comando no reconocido. Comandos posibles:");
-                    System.out.println(" - saldo   → Muestra el saldo actual de la cuenta");
-                    System.out.println(" - retirar    → Retirar dinero de tu cuenta");
-                    System.out.println(" - depositar → Depositar una cantidad de dinero");
-                    System.out.println(" - resumen → muestra el historial de operaciones");
-                    System.out.println(" - salir → salir del cajero");
-                    break;
-
+                    mostrarComandos();
+                }
             }
-        }            
-        
-        
+        }
     }
+
+    private static void mostrarSaldo(CuentaBancaria cuenta) {
+        System.out.printf("Saldo actual: %.2f $\n", cuenta.consultarSaldo());
+    }
+
+    private static void retirarDinero(CuentaBancaria cuenta, Scanner scaner) {
+        System.out.print("Cantidad a retirar: ");
+        double cantidad = scaner.nextDouble();
+        scaner.nextLine();
+
+        if (cantidad <= 0) {
+            System.out.println("Cantidad de 0 o inferior no está permitida");
+            return;
+        }
+
+        if (cuenta.retirar(cantidad)) {
+            System.out.println("Retirada exitosa");
+        } else {
+            System.out.println("Error: saldo insuficiente");
+        }
+        System.out.printf("Saldo actual: %.2f $\n", cuenta.consultarSaldo());
+    }
+
+    private static void depositarDinero(CuentaBancaria cuenta, Scanner scaner) {
+        System.out.print("Cantidad: ");
+        double cantidad = scaner.nextDouble();
+        scaner.nextLine();
+
+        if (cantidad <= 0) {
+            System.out.println("Cantidad de 0 o inferior no está permitida");
+            return;
+        }
+
+        cuenta.depositar(cantidad);
+        System.out.println("Depósito exitoso");
+        System.out.printf("Saldo actual: %.2f $\n", cuenta.consultarSaldo());
+    }
+
+    private static void mostrarComandos() {
+        System.out.println(" - saldo   → Muestra el saldo actual de la cuenta");
+        System.out.println(" - retirar    → Retirar dinero de tu cuenta");
+        System.out.println(" - depositar → Depositar una cantidad de dinero");
+        System.out.println(" - resumen → Muestra el historial de operaciones");
+        System.out.println(" - salir → Salir del cajero");
+    }
+
+    
+    
     public static void testCajeroBasico() {
         CuentaBancaria cuenta = new CuentaBancaria("Javier", 5000d);
         System.out.println("Creacion de cuenta");

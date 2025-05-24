@@ -30,7 +30,7 @@ public class Agenda {
     private Contacto searchContacto(String name) {
         
         for (Contacto c : contactos) {
-            if (c.nombre() == name) return c;
+            if (c.nombre().equalsIgnoreCase(name)) return c;
         }
         
         return null;
