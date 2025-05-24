@@ -54,6 +54,7 @@ public class App {
             
         }
         
+        scaner.close();
         
         
     }
