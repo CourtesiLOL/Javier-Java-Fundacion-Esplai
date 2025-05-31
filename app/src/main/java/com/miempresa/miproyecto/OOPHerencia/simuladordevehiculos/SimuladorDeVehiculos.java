@@ -34,7 +34,7 @@ public class SimuladorDeVehiculos {
             System.out.print("\n> ");
             String option = scaner.nextLine();
 
-            switch (option.toLowerCase()) {
+            switch (option.toLowerCase())       {
                 case "listarvehiculos" -> listarVehiculoes(vehiculos);
                 case "añadirvehiculo" -> añadirVehiculo(scaner,vehiculos);
                 case "borrarvehiculo" -> borrarVehiculo(scaner, vehiculos);
