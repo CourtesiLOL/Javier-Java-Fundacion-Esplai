@@ -11,6 +11,7 @@ import com.miempresa.miproyecto.OOP.listatareas.ListaDeTareas;
 import com.miempresa.miproyecto.OOP.registronotasalumno.RegistroNotasAlumno;
 import com.miempresa.miproyecto.OOPHerencia.mascotasvirtuales.MascotasVirtuales;
 import com.miempresa.miproyecto.OOPHerencia.menudebebidas.MenuDeBebidas;
+import com.miempresa.miproyecto.OOPHerencia.recetariodigital.RecetarioDigital;
 import com.miempresa.miproyecto.OOPHerencia.simuladordevehiculos.SimuladorDeVehiculos;
 import com.miempresa.miproyecto.OOPHerencia.sistemaentradas.SistemaEntradas;
 import com.miempresa.miproyecto.OOPHerencia.sistemaescolar.SistemaEscolar;
@@ -120,7 +121,7 @@ public class App {
                 case 4 -> SistemaEscolar.sistemaEscolar(scaner);
                 case 5 -> MascotasVirtuales.mascotasVirtuales(scaner);
                 case 6 -> SistemaEntradas.sistemaEntradas(scaner);
-                case 7 -> System.out.println("TO-DO");
+                case 7 -> RecetarioDigital.recetarioDigital(scaner);
                 case 8 -> salir = true;
                 default -> System.out.println(String.format("La opcion %s no existe", option));
             }   

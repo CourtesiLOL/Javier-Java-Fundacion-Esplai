@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="Recetario digital" tests="3" skipped="0" failures="0" errors="0" timestamp="2025-05-31T20:20:46" hostname="javier-MS-7D18" time="0.002">
+  <properties/>
+  <testcase name="pruebaIngredientes()" classname="com.miempresa.miproyecto.OOPHerencia.RecetarioDigitalTest" time="0.0"/>
+  <testcase name="pruebaReceta()" classname="com.miempresa.miproyecto.OOPHerencia.RecetarioDigitalTest" time="0.001"/>
+  <testcase name="recetasDiversas()" classname="com.miempresa.miproyecto.OOPHerencia.RecetarioDigitalTest" time="0.001"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
