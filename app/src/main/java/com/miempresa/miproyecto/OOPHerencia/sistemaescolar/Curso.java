@@ -33,5 +33,20 @@ public class Curso {
         estudiantes.forEach(e -> System.out.println("Estudiante: "+e.getName()));
         
     }
+
+    public String getNombreCurso() {
+        return nombreCurso;
+    }
+
+    public Profesor getProfesor() {
+        return profesor;
+    }
+    
+    public boolean setProfesor(Profesor profesor) {
+        if (profesor == null) return false;        
+        this.profesor = profesor;
+        return true;
+    }
+        
     
 }

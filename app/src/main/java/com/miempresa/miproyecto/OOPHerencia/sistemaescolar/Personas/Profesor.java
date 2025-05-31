@@ -13,5 +13,7 @@ public class Profesor extends Persona{
         this.especialidad = especialidad;
     }
     
-    
+    public String getEspecialidad() {
+        return especialidad;
+    }    
 }

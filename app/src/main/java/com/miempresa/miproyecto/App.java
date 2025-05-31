@@ -9,8 +9,11 @@ import com.miempresa.miproyecto.OOP.gestorencustas.GestorEncuesta;
 import com.miempresa.miproyecto.OOP.gestorpersonas.GestorPersona;
 import com.miempresa.miproyecto.OOP.listatareas.ListaDeTareas;
 import com.miempresa.miproyecto.OOP.registronotasalumno.RegistroNotasAlumno;
+import com.miempresa.miproyecto.OOPHerencia.mascotasvirtuales.MascotasVirtuales;
 import com.miempresa.miproyecto.OOPHerencia.menudebebidas.MenuDeBebidas;
 import com.miempresa.miproyecto.OOPHerencia.simuladordevehiculos.SimuladorDeVehiculos;
+import com.miempresa.miproyecto.OOPHerencia.sistemaentradas.SistemaEntradas;
+import com.miempresa.miproyecto.OOPHerencia.sistemaescolar.SistemaEscolar;
 import com.miempresa.miproyecto.OOPHerencia.zoologicovirtual.ZoologicoVirtual;
 
 
@@ -114,9 +117,9 @@ public class App {
                 case 1 -> ZoologicoVirtual.ZoologicoVirtual(scaner);
                 case 2 -> MenuDeBebidas.menuDeBebidas(scaner);
                 case 3 -> SimuladorDeVehiculos.simuladorDeVehiculos(scaner);
-                case 4 -> System.out.println("TO-DO");
-                case 5 -> System.out.println("TO-DO");
-                case 6 -> System.out.println("TO-DO");
+                case 4 -> SistemaEscolar.sistemaEscolar(scaner);
+                case 5 -> MascotasVirtuales.mascotasVirtuales(scaner);
+                case 6 -> SistemaEntradas.sistemaEntradas(scaner);
                 case 7 -> System.out.println("TO-DO");
                 case 8 -> salir = true;
                 default -> System.out.println(String.format("La opcion %s no existe", option));
